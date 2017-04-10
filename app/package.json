@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "过程远程监测系统",
+  "main": "index.js",
+  "scripts": {},
+  "author": "jordiwang",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.2.6",
+    "vue-material": "^0.7.1",
+    "vue-router": "^2.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.3"
+  }
+}

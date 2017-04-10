@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>过程设备远程监测系统</title>
+    {% include 'material/includes/material_css.html' %} {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/style.css' %}">
+</head>
+
+<body>
+    {% if is_authenticated %}
+        <nav class="topbar">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                <div class="brand-logo"><a href="/">过程设备远程监测系统</a></div>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a id="logout" href="#" data-turbolinks="false"><i class="material-icons right">exit_to_app</i>退出</a></li>
+                </ul>
+            </div>
+        </nav>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(function() {
+                $("#logout").click(function(e) {
+                    $.get('/api/logout/').then(function(data) {
+
+                        window.location.href = '/'
+                    })
+                })
+            })
+        </script>
+    {% else %}
+        <nav class="topbar">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                <div class="brand-logo center"><a href="/">过程设备远程监测系统</a></div>
+            </div>
+        </nav>
+        <div class="content row">
+            <div class="col m6 s12 offset-m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title black-text"><span class="light-blue-text text-darken-4" id="login_title">登录</span>/<span id="register_title">注册</span></span>
+                        <form id="login">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="input-field col s12 required">
+                                    <i class="material-icons prefix">account_box</i>
+                                    <input autofocus="" id="login_username" maxlength="254" name="username" type="text">
+                                    <label for="login_username">用户名</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 required">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input id="login_password" name="password" type="password">
+                                    <label for="login_password">密码</label>
+                                </div>
+                            </div>
+                            <div class="card-action right-align">
+                                <button type="submit" class="btn btn-primary">登录</button>
+                            </div>
+                        </form>
+                        <form id="register" class="hide">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="input-field col s12 required">
+                                    <i class="material-icons prefix">account_box</i>
+                                    <input id="register_username" maxlength="254" name="username" type="text">
+                                    <label for="register_username">用户名</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 required">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input id="register_password" name="password" type="password">
+                                    <label for="register_password">密码</label>
+                                </div>
+                                <div class="input-field col s12 required">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input id="register_password2" name="password2" type="password">
+                                    <label for="register_password2">重复密码</label>
+                                </div>
+                                <div class="input-field col s12 required">
+                                    <i class="material-icons prefix">mail</i>
+                                    <input id="email" name="email" type="email">
+                                    <label for="email">电子邮箱</label>
+                                </div>
+                            </div>
+                            <div class="card-action right-align">
+                                <button type="submit" class="btn btn-primary">注册</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{% static 'dist/js/index.js' %}"></script>
+        {% include 'material/includes/material_js.html' %}
+    {% endif %}
+</body>
+
+</html>
