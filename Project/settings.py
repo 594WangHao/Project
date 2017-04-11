@@ -128,4 +128,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, '../static_resources')
+STATIC_ROOT = os.path.join('Project', '../static/')
