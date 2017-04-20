@@ -12,7 +12,7 @@ class UserCheck(MiddlewareMixin):
     """
     def process_request(self, request):
         path = request.path
-        if (path == '/') or (path == '/api/equip_data/') or (path == '/api/equip_info') :
+        if (path == '/') or (path == '/api/equip_data/') or (path == '/api/equip_info') or (path == '/api/equip_list/') :
              if not request.user.is_authenticated():
                 return render(request, 'index.html', {'is_authenticated': False})
 

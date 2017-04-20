@@ -25,7 +25,7 @@ $(function() {
         _this = $(this)
             // formData = new FormData(loginFrom[0])
         $.post('/api/login/', _this.serialize()).then(REST_response).then(function(data) {
-            window.location.href = '/'
+            window.location.reload();
         })
     });
 

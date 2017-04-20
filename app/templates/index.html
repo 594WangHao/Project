@@ -4,33 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>过程设备远程监测系统</title>
-    {% include 'material/includes/material_css.html' %} {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/style.css' %}">
 </head>
 
 <body>
     {% if is_authenticated %}
-        <nav class="topbar">
-            <div class="nav-wrapper">
-                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                <div class="brand-logo"><a href="/">过程设备远程监测系统</a></div>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a id="logout" href="#" data-turbolinks="false"><i class="material-icons right">exit_to_app</i>退出</a></li>
-                </ul>
-            </div>
-        </nav>
-        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-        <script>
-            $(function() {
-                $("#logout").click(function(e) {
-                    $.get('/api/logout/').then(function(data) {
-
-                        window.location.href = '/'
-                    })
-                })
-            })
-        </script>
+        <div id="app"></div>
+        {% load static %}
+        <script src="{% static 'js/app.js' %}"></script>
     {% else %}
+      {% include 'material/includes/material_css.html' %}
         <nav class="topbar">
             <div class="nav-wrapper">
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -41,7 +23,7 @@
             <div class="col m6 s12 offset-m3">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title black-text"><span class="light-blue-text text-darken-4" id="login_title">登录</span>/<span id="register_title">注册</span></span>
+                        <span class="card-title black-text"><span class="light-blue-text text-darken-4" id="login_title">登录</span><!-- /<span id="register_title">注册</span> --></span>
                         <form id="login">
                             {% csrf_token %}
                             <div class="row">
@@ -62,7 +44,7 @@
                                 <button type="submit" class="btn btn-primary">登录</button>
                             </div>
                         </form>
-                        <form id="register" class="hide">
+                        <!-- <form id="register" class="hide">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="input-field col s12 required">
@@ -91,13 +73,13 @@
                             <div class="card-action right-align">
                                 <button type="submit" class="btn btn-primary">注册</button>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
         </div>
         <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-        <script src="{% static 'dist/js/index.js' %}"></script>
+        <script src="{% static 'js/index.js' %}"></script>
         {% include 'material/includes/material_js.html' %}
     {% endif %}
 </body>
