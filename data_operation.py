@@ -15,7 +15,6 @@ import numpy as np
 def create_data():
     print('开始生成数据')
     import numpy as np
-    from matplotlib import pyplot as plt
 
     nSampleNum = 5120 / 2
     ncount = 1024.0
@@ -46,18 +45,18 @@ def create_data():
             point = points[j]
             k = 0
             data_list = []
-            while k < len(x) * (60 * 60 * 12) :
+            while k < len(x) * (60 * 60 * 8) :
                 time += datetime.timedelta(microseconds = 976.5625)
 
                 data = Data(equipment = equipment, point = point, amplitude = sinx[k % len(x)], add_time = time)
 
                 data_list.append(data)
 
-                if k % (1024 * 60 * 20) == 0:
+                if k % (1024 * 60 * 15) == 0:
                     print('设备: %s, 测点: %s, 已生成: %d ' % (equipment.name, point.number, k))
                     Data.objects.bulk_create(data_list)
                     data_list = []
-                    print('设备: %s, 测点: %s , %d 分钟数据已存储' % (equipment.name, point.number, k / (1024 * 60)))
+                    print('设备: %s, 测点: %s , %d 小时数据已存储' % (equipment.name, point.number, k / (1024 * 60 * 60)))
                 k += 1
 
             j += 1
