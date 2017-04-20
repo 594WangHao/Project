@@ -46,7 +46,7 @@ def create_data():
             point = points[j]
             k = 0
             data_list = []
-            while k < len(x) * (60 * 60 * 24) :
+            while k < len(x) * (60 * 60 * 12) :
                 time += datetime.timedelta(microseconds = 976.5625)
 
                 data = Data(equipment = equipment, point = point, amplitude = sinx[k % len(x)], add_time = time)
